@@ -1,4 +1,5 @@
 /* Awake landing — waitlist signup */
+document.addEventListener("DOMContentLoaded", () => { const e = document.getElementById("email"); if (e) e.setAttribute("placeholder", "you@email.com"); });
 
 /**
  * CONFIG — EDIT THIS ONE LINE LATER
