@@ -81,3 +81,17 @@ function setCount(n) {
     /* backend not deployed yet — that's fine */
   }
 })();
+/* Hero video collage cycle */
+(function cycleHeroVideos(){
+  const vids = document.querySelectorAll('.hero-vid');
+  if (vids.length < 2) return;
+  vids.forEach(v => { v.addEventListener('loadeddata', () => { if (v.classList.contains('active')) v.play().catch(()=>{}); }); });
+  let i = 0;
+  setInterval(() => {
+    vids[i].classList.remove('active');
+    i = (i + 1) % vids.length;
+    const next = vids[i];
+    next.classList.add('active');
+    try { next.currentTime = 0; next.play().catch(()=>{}); } catch(e){}
+  }, 8000);
+})();
