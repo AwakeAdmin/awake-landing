@@ -20,22 +20,6 @@ const formNote = document.getElementById("form-note");
 const countEl = document.getElementById("count");
 const toast = document.getElementById("toast");
 
-/* Ghost-text pattern: bulletproof "you@email.com" hint that clears on focus. */
-const GHOST = "you@email.com";
-function showGhost() {
-  emailInput.value = GHOST;
-  emailInput.style.color = "#8A8272";
-  emailInput.style.setProperty("-webkit-text-fill-color", "#8A8272");
-}
-function hideGhost() {
-  emailInput.style.color = "#2A2A2A";
-  emailInput.style.setProperty("-webkit-text-fill-color", "#2A2A2A");
-  if (emailInput.value === GHOST) emailInput.value = "";
-}
-emailInput.removeAttribute("placeholder");
-showGhost();
-emailInput.addEventListener("focus", hideGhost);
-emailInput.addEventListener("blur", () => { if (emailInput.value.trim() === "") showGhost(); });
 
 function showToast(msg, isError = false) {
   toast.textContent = msg;
@@ -51,11 +35,9 @@ function validEmail(v) {
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
-  const raw = emailInput.value.trim();
-  const email = (raw === GHOST ? "" : raw).toLowerCase();
+  const email = emailInput.value.trim().toLowerCase();
   if (!validEmail(email)) {
     showToast("Please enter a valid email address.", true);
-    hideGhost();
     emailInput.focus();
     return;
   }
