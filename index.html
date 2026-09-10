@@ -23,7 +23,7 @@
 <body>
 <nav class="nav">
 <div class="wrap nav-inner">
-<a href="#" class="brand"><span class="brand-mark">◐</span><span class="brand-name">Awake</span></a>
+<a href="#" class="brand"><span class="brand-mark"><svg viewBox="0 0 44 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M 2 22 Q 22 20.5 42 22" opacity="0.5" stroke-width="0.8"/><path d="M 10 22 C 10 18 11 14 9.5 9"/><path d="M 10 17.5 Q 7 17 5 17" stroke-width="1.1"/><path d="M 10 14.5 Q 7 14 5 14" stroke-width="1.1"/><path d="M 10 15.5 Q 13 15 15 15" stroke-width="1.1"/><path d="M 10 12.5 Q 13 12 15 12" stroke-width="1.1"/><path d="M 9.5 9 Q 9.5 7 10 5.5" stroke-width="1.1"/><ellipse cx="4.5" cy="17" rx="1.1" ry="0.7" fill="currentColor" stroke="none" transform="rotate(-15 4.5 17)"/><ellipse cx="4.5" cy="14" rx="1.1" ry="0.7" fill="currentColor" stroke="none" transform="rotate(-20 4.5 14)"/><ellipse cx="15.5" cy="15" rx="1.1" ry="0.7" fill="currentColor" stroke="none" transform="rotate(15 15.5 15)"/><ellipse cx="15.5" cy="12" rx="1.1" ry="0.7" fill="currentColor" stroke="none" transform="rotate(20 15.5 12)"/><circle cx="10" cy="4.8" r="0.95" fill="currentColor" stroke="none"/><path d="M 26 22 L 26 15.5 L 33 10 L 40 15.5 L 40 22"/><rect x="28.5" y="18.5" width="2.2" height="3.5" stroke-width="1"/><rect x="34.5" y="16.5" width="2.2" height="2.2" stroke-width="1"/><circle cx="35.5" cy="9" r="0.8" fill="currentColor" stroke="none" opacity="0.75"/><circle cx="37" cy="7" r="0.6" fill="currentColor" stroke="none" opacity="0.55"/></svg></span><span class="brand-name">Awake</span></a>
 <a href="#waitlist" class="nav-cta">Join waitlist</a>
 </div>
 </nav>
@@ -38,31 +38,24 @@
 </div>
 <div class="hero-scrim" aria-hidden="true"></div>
 <div class="wrap hero-content">
-      <span class="pill">Coming 2026 · iOS & Android</span>
-      <h1>Dating for a <em>simpler</em> life.</h1>
-     <p class="lead">App for bringing like-minded people together.</p>
-      <p class="lead-sub">Interest-based match-making.</p>
-    </div>
-  </header>
+<span class="pill">Coming 2026 · iOS & Android</span>
+<h1>Dating for a <em>simpler</em> life.</h1>
+<p class="lead">App for bringing like-minded people together.</p>
+<p class="lead-sub">Interest-based match-making.</p>
+</div>
+</header>
 
-  <section class="cta">
-    <div class="wrap cta-inner">
-      <form id="waitlist" class="waitlist" novalidate>
-        <label class="sr" for="email">Email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          required
-          autocomplete="email"
-          placeholder="you@email.com"
-        />
-        <button type="submit" id="submit-btn">Join the waitlist</button>
-        <p class="micro" id="form-note">No spam. One email when Awake goes live.</p>
-      </form>
-      <p class="cta-meta">Join <strong id="count">early adopters</strong> already on the list.</p>
-    </div>
-  </section>
+<section class="cta">
+<div class="wrap cta-inner">
+<form id="waitlist" class="waitlist" novalidate onsubmit="var i=document.getElementById('email');if(i.value==='you@email.com'){i.value='';i.focus();return false;}">
+<label class="sr" for="email">Email</label>
+<input type="email" id="email" name="email" required autocomplete="email" value="you@email.com" style="color:#8A8272;-webkit-text-fill-color:#8A8272;" onfocus="if(this.value==='you@email.com'){this.value='';this.style.color='#2A2A2A';this.style.webkitTextFillColor='#2A2A2A';}" onblur="if(this.value.trim()===''){this.value='you@email.com';this.style.color='#8A8272';this.style.webkitTextFillColor='#8A8272';}" />
+<button type="submit" id="submit-btn">Join the waitlist</button>
+<p class="micro" id="form-note">Example: you@email.com &middot; No spam, one email when Awake goes live.</p>
+</form>
+<p class="cta-meta">Join <strong id="count">early adopters</strong> already on the list.</p>
+</div>
+</section>
 <section class="values">
 <div class="wrap grid-3">
 <div class="value"><div class="value-icon">🛡️</div><h3>Real profiles</h3><p>Every member is manually verified with a selfie by a real moderator. No bots. No catfish.</p></div>
@@ -92,8 +85,8 @@
 </section>
 <footer class="foot">
 <div class="wrap foot-inner">
-<div><span class="brand-mark">◐</span><span class="brand-name">Awake</span></div>
-<p class="micro">© 2026 Awake Dating. Built with intention.</p>
+<div><span class="brand-mark"><svg viewBox="0 0 44 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M 2 22 Q 22 20.5 42 22" opacity="0.5" stroke-width="0.8"/><path d="M 10 22 C 10 18 11 14 9.5 9"/><path d="M 10 17.5 Q 7 17 5 17" stroke-width="1.1"/><path d="M 10 14.5 Q 7 14 5 14" stroke-width="1.1"/><path d="M 10 15.5 Q 13 15 15 15" stroke-width="1.1"/><path d="M 10 12.5 Q 13 12 15 12" stroke-width="1.1"/><path d="M 9.5 9 Q 9.5 7 10 5.5" stroke-width="1.1"/><ellipse cx="4.5" cy="17" rx="1.1" ry="0.7" fill="currentColor" stroke="none" transform="rotate(-15 4.5 17)"/><ellipse cx="4.5" cy="14" rx="1.1" ry="0.7" fill="currentColor" stroke="none" transform="rotate(-20 4.5 14)"/><ellipse cx="15.5" cy="15" rx="1.1" ry="0.7" fill="currentColor" stroke="none" transform="rotate(15 15.5 15)"/><ellipse cx="15.5" cy="12" rx="1.1" ry="0.7" fill="currentColor" stroke="none" transform="rotate(20 15.5 12)"/><circle cx="10" cy="4.8" r="0.95" fill="currentColor" stroke="none"/><path d="M 26 22 L 26 15.5 L 33 10 L 40 15.5 L 40 22"/><rect x="28.5" y="18.5" width="2.2" height="3.5" stroke-width="1"/><rect x="34.5" y="16.5" width="2.2" height="2.2" stroke-width="1"/><circle cx="35.5" cy="9" r="0.8" fill="currentColor" stroke="none" opacity="0.75"/><circle cx="37" cy="7" r="0.6" fill="currentColor" stroke="none" opacity="0.55"/></svg></span><span class="brand-name">Awake</span></div>
+<p class="micro">© 2026 Awake Dating LLC. All rights reserved. Built with intention.</p>
 </div>
 </footer>
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
