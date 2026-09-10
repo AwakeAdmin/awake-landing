@@ -1,7 +1,18 @@
 /* Awake landing — waitlist signup */
+document.addEventListener("DOMContentLoaded", () => { const e = document.getElementById("email"); if (e) e.setAttribute("placeholder", "you@email.com"); });
 
+/**
+ * CONFIG — EDIT THIS ONE LINE LATER
+ *
+ * Once you deploy the Awake app inside Emergent, you'll get a live backend URL.
+ * Come back to this file, replace "https://YOUR-BACKEND-URL" with that URL,
+ * and the waitlist form will start saving emails into your app.
+ *
+ * Example: "https://api.awakedating.app"
+ */
 const AWAKE_BACKEND_URL = "https://YOUR-BACKEND-URL";
 
+/* ---------- Form handling ---------- */
 const form = document.getElementById("waitlist");
 const emailInput = document.getElementById("email");
 const submitBtn = document.getElementById("submit-btn");
@@ -9,68 +20,85 @@ const formNote = document.getElementById("form-note");
 const countEl = document.getElementById("count");
 const toast = document.getElementById("toast");
 
-function showToast(msg, isError) {
+function showToast(msg, isError = false) {
   toast.textContent = msg;
-  toast.classList.toggle("error", !!isError);
+  toast.classList.toggle("error", isError);
   toast.classList.add("show");
   clearTimeout(showToast._t);
-  showToast._t = setTimeout(function(){ toast.classList.remove("show"); }, 3800);
+  showToast._t = setTimeout(() => toast.classList.remove("show"), 3800);
 }
 
 function validEmail(v) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test((v || "").trim());
 }
 
-if (form) {
-  form.addEventListener("submit", async function(e) {
-    e.preventDefault();
-    const email = emailInput.value.trim().toLowerCase();
-    if (!validEmail(email)) {
-      showToast("Please enter a valid email address.", true);
-      emailInput.focus();
-      return;
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const email = emailInput.value.trim().toLowerCase();
+  if (!validEmail(email)) {
+    showToast("Please enter a valid email address.", true);
+    emailInput.focus();
+    return;
+  }
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Joining…";
+  try {
+    const res = await fetch(`${AWAKE_BACKEND_URL}/api/waitlist`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    });
+    if (!res.ok) {
+      const text = await res.text().catch(() => "");
+      throw new Error(text || `Request failed (${res.status})`);
     }
-    submitBtn.disabled = true;
-    submitBtn.textContent = "Joining...";
-    try {
-      const res = await fetch(AWAKE_BACKEND_URL + "/api/waitlist", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email })
-      });
-      if (!res.ok) throw new Error("bad");
-      const data = await res.json().catch(function(){ return {}; });
-      form.reset();
-      submitBtn.textContent = "You're on the list";
-      formNote.textContent = "We'll email you the moment Awake goes live.";
-      showToast("You're on the list. Welcome.");
-      if (data && typeof data.count === "number") setCount(data.count);
-    } catch (err) {
-      submitBtn.disabled = false;
-      submitBtn.textContent = "Join the waitlist";
-      showToast("Something went wrong. Please try again.", true);
-    }
-  });
-}
+    const data = await res.json().catch(() => ({}));
+    form.reset();
+    submitBtn.textContent = "You're on the list ✓";
+    formNote.textContent = "We'll email you the moment Awake goes live.";
+    showToast("You're on the list. Welcome.");
+    if (typeof data.count === "number") setCount(data.count);
+  } catch (err) {
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Join the waitlist";
+    console.error(err);
+    showToast("Something went wrong. Please try again.", true);
+  }
+});
 
 function setCount(n) {
-  if (typeof n !== "number" || n < 1 || !countEl) return;
-  countEl.textContent = n.toLocaleString() + " independent thinker" + (n === 1 ? "" : "s");
+  if (typeof n !== "number" || n < 1) return;
+  countEl.textContent = `${n.toLocaleString()} independent thinker${n === 1 ? "" : "s"}`;
 }
 
-/* Hero video crossfade — simple and safe */
-(function () {
-  var vids = document.querySelectorAll(".hero-vid");
+// Fetch current waitlist count (optional, silently fails if backend not deployed yet)
+(async () => {
+  try {
+    const res = await fetch(`${AWAKE_BACKEND_URL}/api/waitlist/count`);
+    if (!res.ok) return;
+    const data = await res.json();
+    if (data && typeof data.count === "number") setCount(data.count);
+  } catch {
+    /* backend not deployed yet — that's fine */
+  }
+})();
+/* ---------- Hero video collage — overlap crossfade (no dark peek) ---------- */
+(function cycleHeroVideos(){
+  const vids = document.querySelectorAll('.hero-vid');
   if (vids.length < 2) return;
-  var i = 0;
-  vids[0].play().catch(function () {});
-  document.addEventListener("touchstart", function () {
-    for (var j = 0; j < vids.length; j++) vids[j].play().catch(function () {});
-  }, { once: true, passive: true });
-  setInterval(function () {
-    vids[i].classList.remove("active");
-    i = (i + 1) % vids.length;
-    try { vids[i].currentTime = 0; vids[i].play().catch(function () {}); } catch (e) {}
-    vids[i].classList.add("active");
+  const FADE_MS = 1600;
+  let i = 0;
+  let z = 1;
+  setInterval(() => {
+    const next = (i + 1) % vids.length;
+    // Layer incoming on top of everything, then fade it in
+    vids[next].style.zIndex = ++z;
+    try { vids[next].currentTime = 0; vids[next].play().catch(()=>{}); } catch(e){}
+    vids[next].classList.add('active');
+    // Once new one is fully visible, drop the old one
+    setTimeout(() => {
+      vids[i].classList.remove('active');
+      i = next;
+    }, FADE_MS);
   }, 8000);
 })();
