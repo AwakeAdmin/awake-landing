@@ -66,4 +66,4 @@ h1,h2,h3{font-family:Fraunces,"Times New Roman",serif;font-weight:600;letter-spa
 .toast{position:fixed;left:50%;bottom:32px;transform:translateX(-50%) translateY(30px);background:var(--sage);color:#fff;padding:12px 20px;border-radius:999px;box-shadow:0 12px 28px rgba(42,42,42,0.2);opacity:0;pointer-events:none;transition:opacity 220ms ease,transform 220ms ease;z-index:40;font-size:15px;}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 .toast.error{background:#B24949;}
-@media (max-width:780px){.grid-3{grid-template-columns:1fr;}.hero{padding:60px 0 48px;}.steps li{padding:20px;gap:16px;}.waitlist{border-radius:16px;flex-direction:column;padding:10px;gap:8px;}.waitlist input{flex:0 0 auto;text-align:center;padding:12px 16px;}.waitlist button{width:100%;}.micro{margin:2px 0;}}
+@media (max-width:780px){.grid-3{grid-template-columns:1fr;}.hero{padding:60px 0 48px;}.steps li{padding:20px;gap:16px;}.step-num{font-size:24px;min-width:40px;}.waitlist{border-radius:16px;flex-direction:column;padding:10px;gap:8px;}.waitlist input{flex:0 0 auto;text-align:center;padding:12px 16px;}.waitlist button{width:100%;}.micro{margin:2px 0;}}
