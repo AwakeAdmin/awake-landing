@@ -81,17 +81,23 @@ function setCount(n) {
     /* backend not deployed yet — that's fine */
   }
 })();
-/* Hero video collage cycle */
+/* ---------- Hero video collage — overlap crossfade (no dark peek) ---------- */
 (function cycleHeroVideos(){
   const vids = document.querySelectorAll('.hero-vid');
   if (vids.length < 2) return;
-  vids.forEach(v => { v.addEventListener('loadeddata', () => { if (v.classList.contains('active')) v.play().catch(()=>{}); }); });
+  const FADE_MS = 1600;
   let i = 0;
+  let z = 1;
   setInterval(() => {
-    vids[i].classList.remove('active');
-    i = (i + 1) % vids.length;
-    const next = vids[i];
-    next.classList.add('active');
-    try { next.currentTime = 0; next.play().catch(()=>{}); } catch(e){}
+    const next = (i + 1) % vids.length;
+    // Layer incoming on top of everything, then fade it in
+    vids[next].style.zIndex = ++z;
+    try { vids[next].currentTime = 0; vids[next].play().catch(()=>{}); } catch(e){}
+    vids[next].classList.add('active');
+    // Once new one is fully visible, drop the old one
+    setTimeout(() => {
+      vids[i].classList.remove('active');
+      i = next;
+    }, FADE_MS);
   }, 8000);
 })();
