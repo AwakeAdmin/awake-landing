@@ -54,6 +54,10 @@ h1,h2,h3{font-family:Fraunces,"Times New Roman",serif;font-weight:600;letter-spa
 .step-num{font-family:Fraunces,serif;font-size:30px;font-weight:600;color:var(--sage);min-width:46px;}
 .steps h3{font-size:20px;margin:0 0 6px;}
 .steps p{margin:0;color:var(--ink-soft);font-size:15px;}
+.pricing-note{padding:56px 0;border-top:1px solid var(--divider);background:var(--cream);text-align:center;}
+.pricing-inner{max-width:640px;}
+.pricing-note h3{font-size:clamp(24px,3.5vw,32px);margin:0 0 12px;color:var(--sage-dark);font-family:Fraunces,serif;}
+.pricing-note p{color:var(--ink-soft);font-size:16px;margin:0;line-height:1.6;}
 .faq{padding:60px 0 100px;border-top:1px solid var(--divider);background:var(--cream-2);}
 .faq h2{font-size:clamp(28px,4vw,38px);margin:0 0 32px;text-align:center;}
 .faq details{background:var(--surface);border:1px solid var(--divider);border-radius:14px;padding:4px 20px;margin:0 auto 12px;max-width:720px;}
