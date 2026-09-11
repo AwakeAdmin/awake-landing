@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F9F6F0"/>
+      <stop offset="100%" stop-color="#EFEADA"/>
+    </linearGradient>
+    <linearGradient id="sageBlock" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6B7F5C"/>
+      <stop offset="100%" stop-color="#55684A"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="80" y="80" width="440" height="470" rx="28" fill="url(#sageBlock)"/>
+  <g transform="translate(160, 200) scale(6.5)" fill="none" stroke="#F9F6F0" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 2 22 Q 22 20.5 42 22" opacity="0.55" stroke-width="0.8"/>
+    <path d="M 10 22 C 10 18 11 14 9.5 9"/>
+    <path d="M 10 17.5 Q 7 17 5 17" stroke-width="1.1"/>
+    <path d="M 10 14.5 Q 7 14 5 14" stroke-width="1.1"/>
+    <path d="M 10 15.5 Q 13 15 15 15" stroke-width="1.1"/>
+    <path d="M 10 12.5 Q 13 12 15 12" stroke-width="1.1"/>
+    <path d="M 9.5 9 Q 9.5 7 10 5.5" stroke-width="1.1"/>
+    <ellipse cx="4.5" cy="17" rx="1.1" ry="0.7" fill="#F9F6F0" stroke="none" transform="rotate(-15 4.5 17)"/>
+    <ellipse cx="4.5" cy="14" rx="1.1" ry="0.7" fill="#F9F6F0" stroke="none" transform="rotate(-20 4.5 14)"/>
+    <ellipse cx="15.5" cy="15" rx="1.1" ry="0.7" fill="#F9F6F0" stroke="none" transform="rotate(15 15.5 15)"/>
+    <ellipse cx="15.5" cy="12" rx="1.1" ry="0.7" fill="#F9F6F0" stroke="none" transform="rotate(20 15.5 12)"/>
+    <circle cx="10" cy="4.8" r="0.95" fill="#F9F6F0" stroke="none"/>
+    <path d="M 26 22 L 26 15.5 L 33 10 L 40 15.5 L 40 22"/>
+    <rect x="28.5" y="18.5" width="2.2" height="3.5" stroke-width="1"/>
+    <rect x="34.5" y="16.5" width="2.2" height="2.2" stroke-width="1"/>
+    <circle cx="35.5" cy="9" r="0.8" fill="#F9F6F0" stroke="none" opacity="0.75"/>
+    <circle cx="37" cy="7" r="0.6" fill="#F9F6F0" stroke="none" opacity="0.55"/>
+  </g>
+  <text x="580" y="200" font-family="Georgia, 'Times New Roman', serif" font-size="80" font-weight="600" fill="#2A2A2A" letter-spacing="-2">Awake Dating</text>
+  <text x="580" y="290" font-family="Georgia, 'Times New Roman', serif" font-size="54" font-style="italic" fill="#55684A" letter-spacing="-1">Dating for a simpler life.</text>
+  <text x="580" y="360" font-family="-apple-system, 'Segoe UI', sans-serif" font-size="28" fill="#5A5A5A">An app for bringing like-minded people</text>
+  <text x="580" y="395" font-family="-apple-system, 'Segoe UI', sans-serif" font-size="28" fill="#5A5A5A">together. Interest-based match-making.</text>
+  <rect x="580" y="460" width="220" height="52" rx="26" fill="#6B7F5C"/>
+  <text x="690" y="494" font-family="-apple-system, 'Segoe UI', sans-serif" font-size="20" font-weight="600" fill="#FFFFFF" text-anchor="middle">Join the Waitlist</text>
+  <text x="580" y="555" font-family="-apple-system, 'Segoe UI', sans-serif" font-size="20" font-weight="500" fill="#8A8272">awakedating.app</text>
+</svg>
