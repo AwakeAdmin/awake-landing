@@ -43,15 +43,17 @@ form.addEventListener("submit", async (e) => {
   submitBtn.disabled = true;
   submitBtn.textContent = "Joining…";
   try {
-    const res = await fetch(`${AWAKE_BACKEND_URL}/api/waitlist`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email }),
-    });
-    if (!res.ok) {
-      const text = await res.text().catch(() => "");
-      throw new Error(text || `Request failed (${res.status})`);
-    }
+    const formData = new URLSearchParams();
+    formData.append("form-name", "awake-waitlist");
+    formData.append("email", email);
+    const res = await fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: formData.toString(),
+    });
+    if (!res.ok) {
+      throw new Error(`Request failed (${res.status})`);
+    }
     const data = await res.json().catch(() => ({}));
     form.reset();
     submitBtn.textContent = "You're on the list ✓";
