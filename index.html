@@ -52,7 +52,8 @@
 
 <section class="cta">
 <div class="wrap cta-inner">
-<form id="waitlist" class="waitlist" novalidate onsubmit="var i=document.getElementById('email');if(i.value==='you@email.com'){i.value='';i.focus();return false;}">
+<form id="waitlist" name="awake-waitlist" class="waitlist" method="POST" data-netlify="true" novalidate onsubmit="var i=document.getElementById('email');if(i.value==='you@email.com'){i.value='';i.focus();return false;}">
+  <input type="hidden" name="form-name" value="awake-waitlist" />
 <label class="sr" for="email">Email</label>
 <input type="email" id="email" name="email" required autocomplete="email" value="you@email.com" style="color:#8A8272;-webkit-text-fill-color:#8A8272;" onfocus="if(this.value==='you@email.com'){this.value='';this.style.color='#2A2A2A';this.style.webkitTextFillColor='#2A2A2A';}" onblur="if(this.value.trim()===''){this.value='you@email.com';this.style.color='#8A8272';this.style.webkitTextFillColor='#8A8272';}" />
 <button type="submit" id="submit-btn">Join the waitlist</button>
