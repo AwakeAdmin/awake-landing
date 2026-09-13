@@ -43,22 +43,30 @@ form.addEventListener("submit", async (e) => {
   submitBtn.disabled = true;
   submitBtn.textContent = "Joining…";
   try {
-    const formData = new URLSearchParams();
-    formData.append("form-name", "awake-waitlist");
-    formData.append("email", email);
-    const res = await fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: formData.toString(),
-    });
-    if (!res.ok) {
-      throw new Error(`Request failed (${res.status})`);
-    }
+    const formData = new URLSearchParams();
+    formData.append("form-name", "awake-waitlist");
+    formData.append("email", email);
+    const res = await fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: formData.toString(),
+    });
+    if (!res.ok) {
+      throw new Error(`Request failed (${res.status})`);
+    }
     const data = await res.json().catch(() => ({}));
     form.reset();
     submitBtn.textContent = "You're on the list ✓";
     formNote.textContent = "We'll email you the moment Awake goes live.";
     showToast("You're on the list. Welcome.");
+    
+    // Track conversion in Google Ads
+    gtag('event', 'conversion', {
+      'send_to': 'AW-18447941652/hcY2Covf_fUcEJSA1dxE',
+      'value': 1.0,
+      'currency': 'USD'
+    });
+    
     if (typeof data.count === "number") setCount(data.count);
   } catch (err) {
     submitBtn.disabled = false;
