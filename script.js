@@ -12,6 +12,22 @@ document.addEventListener("DOMContentLoaded", () => { const e = document.getElem
  */
 const AWAKE_BACKEND_URL = "https://YOUR-BACKEND-URL";
 
+/* ---------- Google Ads conversion tracking ---------- */
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') {
+      window.location = url;
+    }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-18447941652/hcY2COvf_fUcEJSA1dxE',
+      'value': 1.0,
+      'currency': 'USD',
+      'event_callback': callback
+  });
+  return false;
+}
+
 /* ---------- Form handling ---------- */
 const form = document.getElementById("waitlist");
 const emailInput = document.getElementById("email");
@@ -61,11 +77,7 @@ form.addEventListener("submit", async (e) => {
     showToast("You're on the list. Welcome.");
     
     // Track conversion in Google Ads
-    gtag('event', 'conversion', {
-      'send_to': 'AW-18447941652/hcY2Covf_fUcEJSA1dxE',
-      'value': 1.0,
-      'currency': 'USD'
-    });
+    gtag_report_conversion();
     
     if (typeof data.count === "number") setCount(data.count);
   } catch (err) {
